@@ -28,11 +28,10 @@ export default function Home() {
       var highest = null;
       console.log(product.product_id);
       top_rules.forEach((item) => {
-        // console.log(item.antecedents);
-        console.log(item.antecedents);
         if (item.antecedents[0] == product.product_id) {
           if (highest == null) highest = item;
-          else if (highest.confidence < item.confidence) highest = item;
+          else if (highest.lift < item.lift) highest = item;
+          console.log(highest.lift, item.lift);
         }
       });
 
