@@ -11,6 +11,10 @@ export default function Home() {
   const [suggestionProduct, setSuggestionProduct] = useState(null);
   useEffect(() => {}, [cartItems]);
 
+  function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
   function getProduct(product_id) {
     let product = products.find((item) => item.product_id == product_id);
     return product;
@@ -35,7 +39,7 @@ export default function Home() {
         }
       });
 
-      if (highest == null) highest = top_rules[0];
+      if (highest == null) highest = top_rules[randomNumber(0, 77)];
 
       const suggestedProduct = getProduct(highest?.consequents[0]);
 
